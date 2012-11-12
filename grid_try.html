@@ -1,0 +1,62 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+
+<style type="text/css">
+body {margin:0;padding:0;}
+
+body div {
+	float:left;
+	  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+}
+
+</style>
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	var div = '<div style="width:10%;height:10%;border:1px solid red;"></div>'
+	for (var i = 0; i <= 99; i++) {
+		$('body').append(div);
+	};
+
+
+	var divZ = $('div');
+	var counter = 0;
+
+	counter += 1;
+
+
+	for (var i = 0; i <= 10; i++) {
+		var coef = 10*i;
+
+
+				for (var ib = 0; ib <= 10; ib++) {
+
+					var alpha = ((ib)*0.01)+0.1;
+
+					$(divZ[(ib)+coef-i]).text((ib)+coef-i);
+					$(divZ[(ib)+coef-i]).css('background','rgba(0,0,255,'+alpha+')');
+					console.log(ib);
+				}
+
+
+	};
+})
+
+
+</script>
+
+</body>
+</html>

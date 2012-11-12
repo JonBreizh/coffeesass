@@ -1,2 +1,63 @@
 /* style.scss */
 
+/*sass --watch E:/Partage/Jonathan/_MISC/coffeesass/style.scss:E:/Partage/Jonathan/_MISC/coffeesass/style.css*/
+
+@mixin vendor-prefix($name, $argument) {
+  #{$name}: $argument;
+  -webkit-#{$name}: $argument;
+  -ms-#{$name}: $argument;
+  -moz-#{$name}: $argument;
+  -o-#{$name}: $argument;
+}
+$divNum : 649;
+$divNumCoef : 1/$divNum;
+
+$baseColor : hsl(1,100%,50%);
+
+$baseColor : rgba(0,156,255,1);
+$baseColor : rgba(255,0,120,1);
+$baseColor : rgba(255,255,255,1);
+
+body {margin:0;padding:0;width:100%;height:100%;overflow:hidden;
+}
+
+body div {
+	background-color:rgba(0,156,255,0.8);
+	cursor:pointer;
+	@include vendor-prefix(transition, 0.4s background linear);
+	@include vendor-prefix(box-sizing, border-box);
+}
+
+body div:hover{
+	/*border:1px solid red;*/
+}
+
+@for $i from 0 through $divNum {
+	$coloId : $divNumCoef*$i*360;
+	$hsl : 'hsl(#{$coloId},100%,50%)';
+
+	body[rel="#{$i}"]  {background:#{$hsl}}
+}
+
+$baseDivNum : 26 - 1;
+
+
+@for $i from 0 through 26 {
+
+$coef : 25*$i;
+
+	@for $ib from 0 through 25 {
+
+	$newRel : $ib + $coef - $i;
+	$alpha : $ib * (0.005) + 0.01;
+	$rgba : 'rgba(255,255,255,#{$alpha})';
+
+	$alphaBis : 0.001 * ($divNum - $ib) - 0.01;
+	$rgbaBis : 'rgba(255,255,255,#{$alphaBis})';
+
+
+	body div[rel="#{$newRel}"] {background:#{$rgba}}
+	body div[rel="#{$newRel}"]:hover {background:#{$rgbaBis}}
+	}
+}
+
